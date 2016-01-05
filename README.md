@@ -210,7 +210,8 @@ module.exports = (cache, log, config) => {
             return result;
         }
     }
-}```
+}
+```
 Notice how the config, log and cache services are all used. 
 The code for the other services can be found in the repo.
 
@@ -229,9 +230,11 @@ module.exports = (cache, log) => {
         log.info(msg);
         res.send(msg);     
     };
-};```
+};
+```
 As shown earlier, these two dependencies were injected at application startup
 in the `router.js` module:
+
 ```js
 router.get('/clearcache',require(dir + 'clearCacheRoute.js')(services.cache,services.log));
 ```
