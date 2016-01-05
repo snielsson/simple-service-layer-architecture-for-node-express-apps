@@ -108,7 +108,8 @@ The app has 4 services:
 - a cache service, which depends on the log and configuration services.
 - a data service, which depends on the cache, log and configuration services
 
-Here is the structure of the root folder of the application:
+Here is the folder layout of the application, with 4 route modules in the routes folder
+and 4 service modules in the services folder:
 
 ![app folder](Screenshot_1.png)
 
@@ -236,7 +237,7 @@ As shown earlier, these two dependencies were injected at application startup
 in the `router.js` module:
 
 ```js
-router.get('/clearcache',require(dir + 'clearCacheRoute.js')(services.cache,services.log));
+router.get('/clearcache',require(dir + 'clearCacheRoute.js')(s.cache,s.log));
 ```
 
 #Summing up
