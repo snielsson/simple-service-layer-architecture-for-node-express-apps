@@ -1,4 +1,5 @@
-#The Simple Service Layer Architecture for Node Express applications (SSLA).
+## The Simple Service Layer Architecture for Node Express applications (SSLA).
+
 Express is a small framework giving developers at lot of freedom and decisions to make regarding how to structure 
 an Express application. This is in contrast to larger frameworks like ASP.Net MVC and Ruby on Rails,
 which are much more prescriptive regarding how to structure an application, 
@@ -25,7 +26,7 @@ A primary focus is to keep the code simple and avoid the bad parts of Javascript
 patterns are used and nor is the new and this keywords used. The code simply uses objects, functions, closures and 
 modules in very straightforward manners, which avoids many of the quirks of Javascript.
 
-##Modules with dependency injection
+## Modules with dependency injection
 The application code should be modular, by using many small modules that each does only one thing/has limited 
 responsibility. 
 
@@ -43,12 +44,12 @@ Another benfit of singletons is that fewer objects will be allocated, leading to
 Singletons modules are also conceptually simple, less prone to memory leaks and they can all be explicitly wired up at application start, which 
 provides an easy overview of the entire application logic.
 
-###Loose coupling
+### Loose coupling
 By injecting modules into the module function of other modules, the modules become loosely coupled, and individual dependencies 
 can easily be mocked out in test code.
 Dependencies are injected in a module by passing other module instances as parameters to the module function. 
 
-##Service Layer
+## Service Layer
 Central to SSLA is the notion of a "Service Layer". The service layer is a collection of Node modules placed in the 
 services folders. A service will often depend on other services, and dependencies are injected
 into a service by calling the module function of the service passing in all required dependencies.
@@ -70,7 +71,7 @@ Note that services are created as singletons, meaning that only a single instanc
 the entire application. This is not a problem in a single threaded Node process, and helps avoiding memory leaks,
 because services objects are only created once in a well defined way in the servicelayer module.
 
-###What is a service
+### What is a service
 A service is simply a Javascript object that exposes a number of functions. The service is created by calling the function
 exported from the module that contains the service. 
 
@@ -81,7 +82,7 @@ Modules should have a single responsibility, and most application logic can be c
 - a service for database access
 - a service for each remote api 
  
-##Routes with dependency injected services
+## Routes with dependency injected services
 Routes form the API and entry points of the application. Each route is handled by a module which have a 
 module function that returns an express middleware/route function. Each of the route modules are  
 initialized and dependency injected by a simple router module, which simply loads and calls each router module
